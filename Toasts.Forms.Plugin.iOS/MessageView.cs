@@ -184,7 +184,7 @@ namespace Toasts.Forms.Plugin.iOS
             
             float xOffset = Padding;
             float yOffset = Padding;
-            styleSheet.IconImageForMessageType (MessageType).Draw (new RectangleF (xOffset, yOffset, IconSize, IconSize));
+            styleSheet.IconImageForMessageType(MessageType).Draw(new RectangleF(xOffset, yOffset, IconSize, IconSize));
             context.SaveState ();
                 
             yOffset -= TextOffset;

@@ -33,8 +33,15 @@ namespace Toasts.Forms.Plugin.Droid
 
         public void Add(Crouton crouton)
         {
+            crouton.CroutonClicked += crouton_CroutonClicked;
+
             _croutonQueue.Add(crouton);
             DisplayCrouton();
+        }
+
+        void crouton_CroutonClicked(object sender, CroutonClickedArgs e)
+        {
+            RemoveCrouton(e.Crouton);
         }
 
         private void DisplayCrouton()

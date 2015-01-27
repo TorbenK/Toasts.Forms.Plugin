@@ -5,8 +5,15 @@ using Android.Views.Animations;
 
 namespace Toasts.Forms.Plugin.Droid
 {
+    public class CroutonClickedArgs : EventArgs
+    {
+        public Crouton Crouton { get; set; }
+    }
+
     public class Crouton : Java.Lang.Object, View.IOnClickListener
     {
+        public event EventHandler<CroutonClickedArgs> CroutonClicked;
+
         private readonly View _customView;
         private Action<bool> _onClick;
 
@@ -101,6 +108,10 @@ namespace Toasts.Forms.Plugin.Droid
 
         public void OnClick(View view)
         {
+            if (this.CroutonClicked != null)
+                this.CroutonClicked(this, new CroutonClickedArgs { Crouton = this });
+
+
             if (_onClick != null)
                 _onClick(true);
             _onClick = null;
